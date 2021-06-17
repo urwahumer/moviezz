@@ -9,7 +9,8 @@ import {
   UPCOMING_MOVIES_START,
   UPCOMING_MOVIES_FAILED,
   UPCOMING_MOVIES_SUCCESS,
-  GET_VIDEO_SUCCESS
+  GET_VIDEO_SUCCESS,
+  GET_VIDEO_FAILED
 } from "../actionTypes/movies";
 
 export const upcomingMovies = data => async dispatch => {
@@ -47,6 +48,7 @@ export const getVideo = id => async dispatch => {
 
     return res;
   } catch (error) {
+    // dispatch({ type: GET_VIDEO_FAILED, payLoad: [] });
     return error;
   }
 };

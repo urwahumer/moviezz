@@ -11,7 +11,7 @@ import SpecificMovie from "./Components/SpecificMovie/SpecificMovie";
 
 function App() {
   return (
-    <div>
+    <div className="h-100">
       <Router>
         <Switch>
           <AuthenticatedRoutes exact path="/" component={Home} />
