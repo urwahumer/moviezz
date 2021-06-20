@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Carousel } from "antd";
+import { Link } from "react-router-dom";
 
 const HomeCarousel = () => {
   const data = useSelector(state => state.movies.upcomingMoviesList);
@@ -9,29 +10,36 @@ const HomeCarousel = () => {
     data.map(item => {
       return {
         img: item.backdrop_path,
-        name: item.title
+        name: item.title,
+        id: item.id
       };
     });
   console.log(carouselData);
 
   return (
-    <Carousel autoplay effect="fade">
-      {carouselData &&
-        carouselData.map((row, index) => {
-          return (
-            <div className="carousel-item">
-              <img
-                class="d-block w-100"
-                src={`https://image.tmdb.org/t/p/w1280${row.img}`}
-                alt="First slide"
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h3 className="text-white fornt-weight-bold">{row.name}</h3>
+    <div>
+      <Carousel autoplay effect="fade">
+        {carouselData &&
+          carouselData.map((row, index) => {
+            return (
+              <div className="carousel-item">
+                <Link to={`/movie/${row.id}`}>
+                  <img
+                    class="d-block w-100"
+                    src={`https://image.tmdb.org/t/p/w1280${row.img}`}
+                    alt="First slide"
+                  />
+                  <div class="carousel-caption d-none d-md-block">
+                    <p className="primary-text-color fornt-weight-bold carusel-movie-heading">
+                      {row.name}
+                    </p>
+                  </div>
+                </Link>
               </div>
-            </div>
-          );
-        })}
-    </Carousel>
+            );
+          })}
+      </Carousel>
+    </div>
   );
 };
 

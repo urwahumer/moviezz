@@ -19,7 +19,7 @@ const Upcoming = () => {
   };
   console.log(vid);
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="row justify-content-center">
         {data &&
           data.reverse().map((row, index) => {

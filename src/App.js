@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
+import "./Styles/index.scss";
 import { useEffect } from "react";
 import { upcomingMovies } from "./redux/actions/movies";
 import { useDispatch, useSelector } from "react-redux";

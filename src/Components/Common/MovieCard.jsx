@@ -8,7 +8,7 @@ const MovieCard = ({ row, index, settingVideoid }) => {
   const [vid, setVid] = useState("");
 
   return (
-    <div className="col-10 col-md-3" key={index}>
+    <div className="col-10 col-md-4 col-lg-3 movie-card" key={index}>
       <figure className="image-block">
         {/* <h1>{i.title}</h1> */}
         <img
@@ -22,31 +22,40 @@ const MovieCard = ({ row, index, settingVideoid }) => {
         <figcaption className="">
           <div className="d-flex flex-column justify-content-between h-100">
             <div>
-              <h3>{row.title}</h3>
+              <h4 className="primary-text-color">{row.title}</h4>
               <p className="text">{row.overview}</p>
             </div>
             <div>
-              <ReactStars
-                value={row.vote_average}
-                count={5}
-                size={24}
-                isHalf={true}
-                emptyIcon={<i className="far fa-star"></i>}
-                halfIcon={<i className="fa fa-star-half-alt"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
-                activeColor="#ffd700"
-              />
-              <button
-                data-toggle="modal"
-                data-target=".bd-example-modal-lg"
-                onClick={() => {
-                  settingVideoid(row.id);
-                  setVid(row.id);
-                }}
-              >
-                Trailer
-              </button>
-              <NavLink to={`/movie/${row.id}`}> More info</NavLink>
+              <div classname="mb-3 ">
+                <span className="primary-text-color">
+                  {`${row.vote_average}`}
+                </span>
+                <span>/10</span>
+              </div>
+              <div className="d-flex flex-row justify-content-between align-items-center mt-3">
+                <div>
+                  <button
+                    type="button"
+                    data-toggle="modal"
+                    data-target=".bd-example-modal-lg"
+                    onClick={() => {
+                      settingVideoid(row.id);
+                      setVid(row.id);
+                    }}
+                  >
+                    <i class="fa fa-play" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div>
+                  <NavLink
+                    to={`/movie/${row.id}`}
+                    className="primary-text-color"
+                  >
+                    {" "}
+                    More info
+                  </NavLink>
+                </div>
+              </div>
             </div>
           </div>
         </figcaption>

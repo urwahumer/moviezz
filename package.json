@@ -20,6 +20,8 @@
     "react-star-ratings": "^2.3.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.35.1",
+    "node-sass": "^4.13.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
