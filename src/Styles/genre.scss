@@ -1,0 +1,12 @@
+@import "./media-quries.scss";
+
+.genre {
+  .genre-title {
+    font-family: oswaldBold;
+    color: $primary-golden;
+    font-size: 10rem;
+    @include for-phone-only {
+      font-size: 7.5rem;
+    }
+  }
+}

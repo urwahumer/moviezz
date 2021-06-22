@@ -1,7 +1,8 @@
 import * as actions from "../actionTypes/index";
 const initialState = {
   isLoading: false,
-  specificMovieDetail: []
+  specificMovieDetail: [],
+  similarMoviesList: []
 };
 
 export default (state = initialState, action) => {
@@ -21,6 +22,23 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         specificMovieDetail: action.payLoad
+      };
+    //Similar Movies
+    case actions.SIMILAR_MOVIE_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case actions.SIMILAR_MOVIE_FAILED:
+      return {
+        ...state,
+        isLoading: false
+      };
+    case actions.SIMILAR_MOVIE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        similarMoviesList: action.payLoad
       };
 
     default:

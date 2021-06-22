@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideo } from "../../redux/actions/movies";
+import { Spin } from "antd";
 import $ from "jquery";
 
 const TrailerModal = ({ id, image }) => {
   const [modal, setModal] = useState(id);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const data = useSelector(state => state.movies.specificVideoInfo[0]);
 
@@ -13,8 +15,11 @@ const TrailerModal = ({ id, image }) => {
     getVideoId(id);
   }, [id]);
   const getVideoId = async id => {
+    setLoading(true);
     await dispatch(getVideo(id));
     setModal(id);
+
+    setLoading(false);
   };
   const handleVideoPause = () => {
     console.log("hallo");
@@ -34,7 +39,7 @@ const TrailerModal = ({ id, image }) => {
         aria-labelledby="myLargeModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Modal title</h5>
@@ -48,18 +53,22 @@ const TrailerModal = ({ id, image }) => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            {data && data.key !== "" && (
-              <iframe
-                id="youtube_frame"
-                class="yt_player_iframe"
-                width="100%"
-                height="500"
-                src={`https://www.youtube.com/embed/${data && data.key}`}
-                title="YouTube video player"
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
-            )}
+            <Spin spinning={loading}>
+              <div style={{ height: "500px" }}>
+                {data && data.key !== "" && (
+                  <iframe
+                    id="youtube_frame"
+                    class="yt_player_iframe"
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${data && data.key}`}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                )}
+              </div>
+            </Spin>
           </div>
         </div>
       </div>

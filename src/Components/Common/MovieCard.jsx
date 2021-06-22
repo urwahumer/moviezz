@@ -17,6 +17,7 @@ const MovieCard = ({ row, index, settingVideoid }) => {
               ? `https://image.tmdb.org/t/p/w500/${row.poster_path}`
               : fallback
           }
+          loading="lazy"
           alt=""
         />
         <figcaption className="">

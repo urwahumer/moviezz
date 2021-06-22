@@ -1,3 +1,5 @@
+@import "./media-quries.scss";
+
 .specific-movie {
   .movie-name {
     font-family: oswaldMedium;
@@ -10,5 +12,22 @@
     // font-family: oswaldRegular;
     // word-spacing: 0.3rem;
     // letter-spacing: 0.01rem;
+  }
+  .movie-poster {
+    height: 30rem;
+    @include for-phone-only {
+      height: 23rem;
+    }
+    // @include for-tablet-portrait-up {
+    //   height: 20rem;
+    // }
+  }
+  .movie-info-tabs {
+    border-top: 1px solid $primary-golden;
+    border-bottom: 1px solid $primary-golden;
+    i {
+      color: $primary-golden;
+      font-size: 1.5rem;
+    }
   }
 }
