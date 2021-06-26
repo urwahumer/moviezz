@@ -19,18 +19,25 @@ const SimilatrMovies = () => {
 
   return (
     <Carousel afterChange={onChange}>
-      <div className="container-fluid mt-4">
-        <div className="row justify-content-center">
-          {data &&
-            data.slice(0, 4).map((row, index) => {
-              return (
-                <MovieCard
-                  row={row}
-                  index={index}
-                  settingVideoid={settingVideoid}
-                />
-              );
-            })}
+      <div className="container-fluid mt-5 ">
+        <div data-aos="fade-up" data-aos-duration="3000">
+          {data && data.length > 0 ? (
+            <div>
+              <p className="text-center text-white h2 mb-3">Similar Movies</p>
+              <div className="row justify-content-center">
+                {data &&
+                  data.slice(0, 4).map((row, index) => {
+                    return (
+                      <MovieCard
+                        row={row}
+                        index={index}
+                        settingVideoid={settingVideoid}
+                      />
+                    );
+                  })}
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
     </Carousel>

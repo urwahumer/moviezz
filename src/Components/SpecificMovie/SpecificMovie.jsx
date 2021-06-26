@@ -10,21 +10,32 @@ import SimilatrMovies from "./SimilatrMovies";
 import Loader from "../../Utils/Loader";
 import TrailerModal from "../Home/TrailerModal";
 import MovieInfoTabs from "./MovieInfoTabs";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SpecificMovie = props => {
   const [loading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const data = useSelector(state => state.specificMovie.specificMovieDetail);
-  console.log(props.match.params.id);
+
+  //Animation call
+  useEffect(() => {
+    AOS.init({
+      duration: 2000
+    });
+  }, []);
+
   useEffect(() => {
     fetchdetail(props.match.params.id);
   }, [props.match.params.id]);
+
   const fetchdetail = async id => {
     setIsLoading(true);
     await dispatch(fetchMovieDetails(id));
     await dispatch(fetchSimilarMovies(id));
     setIsLoading(false);
   };
+
   return (
     <div
       className="specific-movie "
@@ -39,16 +50,20 @@ const SpecificMovie = props => {
     >
       <div className="container pt-5">
         <div className="row justify-content-center pt-5">
-          <div className="col-10 col-md-4">
+          <div
+            className="col-10 col-md-4"
+            data-aos="fade-right"
+            data-aos-duration="3000"
+          >
             <img
-              className="w-100 rounded movie-poster"
+              className="w-100  movie-poster"
               height="500px"
               src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             ></img>
-            <div className="priamry-border primary-border-color rounded">
+            <div className="primary-border-color trailer-btn-section">
               <div className="my-5 no-repeat center center fixed">
                 <button
-                  className="w-100 primary-background-color rounded py-2  "
+                  className="w-100 primary-background-color py-2  "
                   data-toggle="modal"
                   data-target=".bd-example-modal-lg"
                 >
@@ -57,7 +72,11 @@ const SpecificMovie = props => {
               </div>
             </div>
           </div>
-          <div className="col-10 col-md-8 mt-5 mt-md-0">
+          <div
+            className="col-10 col-md-8 mt-5 mt-md-0"
+            data-aos="fade-left"
+            data-aos-duration="3000"
+          >
             <div>
               <h3 className="text-white movie-name">{data.title}</h3>
               {data &&
@@ -80,12 +99,13 @@ const SpecificMovie = props => {
 
               <div className="d-flex flex-row flex-md-column movie-info-tabs py-3 justify-content-between">
                 <div className="row flex-column flex-md-row  justify-content-between ">
-                  <div className=" col-3 text-center py-1 py-md-0  ">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                  </div>
                   <div className="col-3 text-center py-1 py-md-0  ">
                     <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                   </div>
+                  <div className=" col-3 text-center py-1 py-md-0  ">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                  </div>
+
                   <div className="col-3 text-center py-1 py-md-0 ">
                     <i class="fa fa-language" aria-hidden="true"></i>
                   </div>
@@ -95,16 +115,17 @@ const SpecificMovie = props => {
                 </div>
 
                 <div className="py-1 py-md-0 row flex-column flex-md-row justify-content-between mt-0 mt-2">
-                  <div className="col-5 col-md-3 text-center py-1 py-md-0 text-white ">
-                    ${data.budget && currencyFormatter(data.budget)}
-                  </div>
-                  <div className="col-5 col-md-3 text-center py-1 py-md-0 text-white ">
+                  <div className="col-12 col-md-3 text-center py-1 py-md-0 text-white ">
                     {data && data.release_date}
                   </div>
-                  <div className="col-5 col-md-3 text-center py-1 py-md-0 text-white text-capitalize">
+                  <div className="col-12 col-md-3 text-center py-1 py-md-0 text-white ">
+                    ${data.budget && currencyFormatter(data.budget)}
+                  </div>
+
+                  <div className="col-12 col-md-3 text-center py-1 py-md-0 text-white text-capitalize">
                     {data && data.original_language}
                   </div>
-                  <div className="col-5 col-md-3 text-center py-1 py-md-0 text-white ">
+                  <div className="col-12 col-md-3 text-center py-1 py-md-0 text-white ">
                     {data.runtime && convertNumberToTime(data.runtime)}
                   </div>
                 </div>
@@ -114,6 +135,7 @@ const SpecificMovie = props => {
         </div>
       </div>
       <TrailerModal id={data.id} image={data.poster_path} />
+
       <SimilatrMovies />
     </div>
   );

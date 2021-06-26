@@ -4,10 +4,10 @@
   .genre-title {
     font-family: oswaldBold;
     color: $primary-golden;
-    font-size: 8rem;
+    font-size: 10rem;
     text-align: center;
     @include for-phone-only {
-      font-size: 7.5rem;
+      font-size: 4.5rem;
     }
   }
 }

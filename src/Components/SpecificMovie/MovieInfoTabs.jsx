@@ -74,20 +74,22 @@ const MovieInfoTabs = ({ data }) => {
     <div className="container-fluid movie-info-tabs">
       <div classNmae="row d-flex table-header ">
         <div className="col-4 py-3">
-          <i class="fa fa-money" aria-hidden="true"></i>
-        </div>
-        <div className="col-4 py-3">
           <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
         </div>
+        <div className="col-4 py-3">
+          <i class="fa fa-money" aria-hidden="true"></i>
+        </div>
+
         <div className="col-4 py-3">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
         </div>
       </div>
       <div classNmae="row d-flex table-header  text">
+        <div className="col-4 py-3">{data && data.release_date}</div>
         <div className="col-4 py-3">
           {data.budget && currencyFormatter(data.budget)}
         </div>
-        <div className="col-4 py-3">{data && data.release_date}</div>
+
         <div className="col-4 py-3">
           {data.runtime && convertNumberToTime(data.runtime)}
         </div>

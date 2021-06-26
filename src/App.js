@@ -6,11 +6,13 @@ import AuthenticatedRoutes from "./Utils/Routes/AuthenticatedRoutes";
 import Upcoming from "./Components/Upcoming/Upcoming";
 import SpecificMovie from "./Components/SpecificMovie/SpecificMovie";
 import Genre from "./Components/Genre/Genre";
+import ScrollToTop from "./Utils/ScrollToTop";
 
 function App() {
   return (
     <div className="h-100">
       <Router>
+        <ScrollToTop />
         <Switch>
           <AuthenticatedRoutes exact path="/" component={Home} />
           <AuthenticatedRoutes exact path="/upcoming" component={Upcoming} />

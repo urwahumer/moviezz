@@ -11,7 +11,7 @@ export const fetchGenreMovies = (id, page) => async dispatch => {
     );
     let gift = res.data.results;
     console.log(res.data);
-    dispatch({ type: GENRE_MOVIES_SUCCESS, payLoad: gift });
+    dispatch({ type: GENRE_MOVIES_SUCCESS, payLoad: res.data });
     return res;
   } catch (error) {
     return error;

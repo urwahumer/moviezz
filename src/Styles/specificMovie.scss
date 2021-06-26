@@ -15,12 +15,22 @@
   }
   .movie-poster {
     height: 30rem;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
     @include for-phone-only {
       height: 23rem;
     }
     // @include for-tablet-portrait-up {
     //   height: 20rem;
     // }
+  }
+  .trailer-btn-section {
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    border: 3px solid $primary-golden;
+    button {
+      color: white;
+    }
   }
   .movie-info-tabs {
     border-top: 1px solid $primary-golden;

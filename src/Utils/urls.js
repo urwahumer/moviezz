@@ -6,3 +6,4 @@ export const trailerUrl = "/movie";
 export const specificMovieUrl = "/movie";
 export const similarMovies = "/similar";
 export const genreMovies = "/discover/movie";
+export const serachMovie = "/search/movie";
