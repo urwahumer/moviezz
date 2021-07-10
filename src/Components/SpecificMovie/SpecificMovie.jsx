@@ -12,6 +12,8 @@ import TrailerModal from "../Home/TrailerModal";
 import MovieInfoTabs from "./MovieInfoTabs";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { getVideo } from "../../redux/actions/movies";
+import moment from "moment";
 
 const SpecificMovie = props => {
   const [loading, setIsLoading] = useState(false);
@@ -34,6 +36,13 @@ const SpecificMovie = props => {
     await dispatch(fetchMovieDetails(id));
     await dispatch(fetchSimilarMovies(id));
     setIsLoading(false);
+  };
+
+  const handleBtnClick = async () => {
+    console.log(props.match.params.id);
+    // setLoading(true);
+    await dispatch(getVideo(props.match.params.id));
+    // setLoading(false);
   };
 
   return (
@@ -66,6 +75,7 @@ const SpecificMovie = props => {
                   className="w-100 primary-background-color py-2  "
                   data-toggle="modal"
                   data-target=".bd-example-modal-lg"
+                  onClick={handleBtnClick}
                 >
                   WATCH TRAILER
                 </button>
@@ -116,7 +126,7 @@ const SpecificMovie = props => {
 
                 <div className="py-1 py-md-0 row flex-column flex-md-row justify-content-between mt-0 mt-2">
                   <div className="col-12 col-md-3 text-center py-1 py-md-0 text-white ">
-                    {data && data.release_date}
+                    {moment(data && data.release_date).format("DD-MM-YYYY")}
                   </div>
                   <div className="col-12 col-md-3 text-center py-1 py-md-0 text-white ">
                     ${data.budget && currencyFormatter(data.budget)}

@@ -14,7 +14,6 @@ const HomeCarousel = () => {
         id: item.id
       };
     });
-  console.log(carouselData);
 
   return (
     <div>
@@ -22,19 +21,21 @@ const HomeCarousel = () => {
         {carouselData &&
           carouselData.map((row, index) => {
             return (
-              <div className="carousel-item">
-                <Link to={`/movie/${row.id}`}>
-                  <img
-                    class="d-block w-100"
-                    src={`https://image.tmdb.org/t/p/w1280${row.img}`}
-                    alt="First slide"
-                  />
-                  <div class="carousel-caption d-none d-md-block">
-                    <p className="primary-text-color fornt-weight-bold carusel-movie-heading">
-                      {row.name}
-                    </p>
-                  </div>
-                </Link>
+              <div className="carousel-item ">
+                <div className="img-gradient">
+                  <Link to={`/movie/${row.id}`}>
+                    <img
+                      class="d-block w-100 carousel-image"
+                      src={`https://image.tmdb.org/t/p/w1280${row.img}`}
+                      alt="First slide"
+                    />
+                    <div class="carousel-caption d-none d-md-block">
+                      <p className="primary-text-color fornt-weight-bold carusel-movie-heading">
+                        {row.name}
+                      </p>
+                    </div>
+                  </Link>
+                </div>
               </div>
             );
           })}

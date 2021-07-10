@@ -4,7 +4,7 @@ import Loader from "../../Utils/Loader";
 
 const SharedLayout = props => {
   const [isLoading, setIsLoading] = useState(true);
-  console.log(props);
+
   setTimeout(() => {
     setIsLoading(false);
   }, 5000);

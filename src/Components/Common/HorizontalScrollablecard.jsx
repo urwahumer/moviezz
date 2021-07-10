@@ -6,7 +6,7 @@ import TrailerModal from "../Home/TrailerModal";
 import { Spin } from "antd";
 import AOS from "aos";
 
-const MovieCard = ({ row, index, handleBtnClick }) => {
+const HorizontalScrollablecard = ({ row, index, handleBtnClick }) => {
   const [vid, setVid] = useState("");
   const history = useHistory();
   //Animation call
@@ -26,7 +26,7 @@ const MovieCard = ({ row, index, handleBtnClick }) => {
   };
 
   return (
-    <div className="col-10 col-md-4 col-lg-3 movie-card  " key={index}>
+    <div className="horizontal-scrollable-movie-card mr-5 " key={index}>
       <figure className="image-block">
         {/* <h1>{i.title}</h1> */}
         <img
@@ -86,4 +86,4 @@ const MovieCard = ({ row, index, handleBtnClick }) => {
   );
 };
 
-export default MovieCard;
+export default HorizontalScrollablecard;

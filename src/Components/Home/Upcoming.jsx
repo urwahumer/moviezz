@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
 import TrailerModal from "./TrailerModal";
 import { useDispatch, useSelector } from "react-redux";
-import { upcomingMovies } from "../../redux/actions/movies";
+import { upcomingMovies, getVideo } from "../../redux/actions/movies";
 import MovieCard from "../Common/MovieCard";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 const Upcoming = () => {
   const dispatch = useDispatch();
   const data = useSelector(state => state.movies.upcomingMoviesList);
   const [vid, setVid] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(upcomingMovies("1"));
   }, []);
 
-  const settingVideoid = id => {
-    console.log("Id", id);
-    setVid(id);
+  //Set video
+  const handleBtnClick = async id => {
+    setLoading(true);
+    await dispatch(getVideo(id));
+    setLoading(false);
   };
-  console.log(vid);
+
   return (
     <div className="container mt-4">
       <div className="row justify-content-center">
@@ -27,12 +32,13 @@ const Upcoming = () => {
               <MovieCard
                 row={row}
                 index={index}
-                settingVideoid={settingVideoid}
+                handleBtnClick={handleBtnClick}
+                loading={loading}
               />
             );
           })}
       </div>
-      {/* <TrailerModal id={vid} /> */}
+      <TrailerModal />
     </div>
   );
 };

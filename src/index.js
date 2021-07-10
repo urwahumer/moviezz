@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "react-multi-carousel/lib/styles.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
+import "aos/dist/aos.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";

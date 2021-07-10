@@ -8,8 +8,8 @@ const Loader = props => {
   // }, [props.lodaing]);
   console.log(props.loading);
   return (
-    <div class={props.loading ? "u-loading" : "d-none"}>
-      <div class="u-loading__symbol">
+    <div className={props.loading ? "u-loading" : "d-none"}>
+      <div className="u-loading__symbol">
         <img src={logo} />
       </div>
     </div>

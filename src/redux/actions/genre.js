@@ -10,7 +10,6 @@ export const fetchGenreMovies = (id, page) => async dispatch => {
       `${API_BASE_URL}${genreMovies}?api_key=${Api_key}&with_genres=${id}&page=${page}`
     );
     let gift = res.data.results;
-    console.log(res.data);
     dispatch({ type: GENRE_MOVIES_SUCCESS, payLoad: res.data });
     return res;
   } catch (error) {

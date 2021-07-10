@@ -5,24 +5,22 @@ import { Spin } from "antd";
 import $ from "jquery";
 
 const TrailerModal = ({ id, image }) => {
-  const [modal, setModal] = useState(id);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const data = useSelector(state => state.movies.specificVideoInfo[0]);
 
-  console.log(id);
-  useEffect(() => {
-    getVideoId(id);
-  }, [id]);
-  const getVideoId = async id => {
-    setLoading(true);
-    await dispatch(getVideo(id));
-    setModal(id);
+  // console.log(id);
+  // useEffect(() => {
+  //   getVideoId(id);
+  // }, [id]);
+  // const getVideoId = async id => {
+  //   setLoading(true);
+  //   await dispatch(getVideo(id));
+  //   setModal(id);
 
-    setLoading(false);
-  };
+  //   setLoading(false);
+  // };
   const handleVideoPause = () => {
-    console.log("hallo");
     $(".close").click(function() {
       $("iframe").attr("src", $("iframe").attr("src"));
     });

@@ -8,7 +8,8 @@ import Loader from "../../Utils/Loader";
 import logo from "../../Assets/Logo/logo.svg";
 import SerachForm from "../Common/SerachForm";
 import AOS from "aos";
-import "aos/dist/aos.css";
+
+import { getVideo } from "../../redux/actions/movies";
 
 const Genre = props => {
   const dispatch = useDispatch();
@@ -23,11 +24,11 @@ const Genre = props => {
   const poster = data !== [] && data[0] && data[0].backdrop_path;
 
   //Animation call
-  useEffect(() => {
-    AOS.init({
-      duration: 2000
-    });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 2000
+  //   });
+  // }, []);
 
   //Render first time and when some parameter changes
   useEffect(() => {
@@ -41,9 +42,8 @@ const Genre = props => {
   };
 
   // Setting video ID
-  const settingVideoid = id => {
-    console.log("Id", id);
-    setVid(id);
+  const handleBtnClick = async id => {
+    await dispatch(getVideo(id));
   };
 
   //Handle Page Change
@@ -71,8 +71,8 @@ const Genre = props => {
           <p className="genre-title">{getGenreName(props.match.params.id)}</p>
           <div
             className="mt-4 w-100"
-            data-aos="fade-up"
-            data-aos-duration="3000"
+            // data-aos="fade-up"
+            // data-aos-duration="3000"
           >
             <SerachForm
               genre={props.match.params.id}
@@ -83,8 +83,8 @@ const Genre = props => {
       </div>
       <div
         className="container mt-4 "
-        data-aos="fade-up"
-        data-aos-duration="3000"
+        // data-aos="fade-up"
+        // data-aos-duration="3000"
       >
         <Spin spinning={isLoading} indicator={logo}>
           <div className="row justify-content-center">
@@ -94,7 +94,7 @@ const Genre = props => {
                     <MovieCard
                       row={row}
                       index={index}
-                      settingVideoid={settingVideoid}
+                      handleBtnClick={handleBtnClick}
                     />
                   );
                 })
@@ -103,7 +103,7 @@ const Genre = props => {
                     <MovieCard
                       row={row}
                       index={index}
-                      settingVideoid={settingVideoid}
+                      handleBtnClick={handleBtnClick}
                     />
                   );
                 })}

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [btnDisplay, setBtnDisplay] = useState(true);
 
+  console.log(process.env.REACT_APP_TMDB_API_KEY);
+
   return (
     <div class="super-nav-class">
       <input type="checkbox" id="op"></input>
